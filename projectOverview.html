@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrgaNICE</title>
+
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico"/>
+
+    <!-- CSS FILES -->
+    <link rel="stylesheet" type="text/css" href="CSS/projectOverview.css">
+    <link rel="stylesheet" id="theme" type="text/css" href="CSS/projectOverviewOriginal.css">
+    <link rel="stylesheet" type="text/css" href="CSS/tutorial.css">
+</head>
+
+
+<body>
+    <div id="mainContainer">
+
+       <!-- HEADER -->
+        <header>
+            <div id="projectNameDiv"><span id="orga">orga</span><span id="nice">NICE</span></div>
+            <div id="progressBarDiv">0%</div>
+        </header>
+
+        <!-- SIDEBAR -->
+        <div id="sidebar">
+            <div class="toggleBtn" onclick="openSidebar()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- TUTORIAL ICONS -->
+            <div id="square"></div>
+            <div id="arrow">
+                <div id="arrowHead"></div>
+            </div>
+
+            <!-- CREATE TASK, MEMBER AND TRASH -->
+            <ul id="createLinks">
+                <li><a onclick="openTaskWindow()">Create new task</a></li>
+                <li><a onclick="openMembersWindow()">Create members</a></li>
+                <li id="trashTaskText">Trash task</li>
+            </ul>
+            
+            <img id="createNewTaskButton" src="Images/plusIcon.png" alt="createNewTaskButton" onclick="openTaskWindow()">
+            <img id="createNewMemberButton" src="Images/addMemberSymbol.png" alt="createNewMemberButton" onclick="openMembersWindow()">
+            <div id="trashContainerDiv" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <img src="Images/trashcan.png" alt="trashCan">
+            </div>
+
+            <!-- LINKS TO "TODO", "IN PROGRESS" AND "FINISHED" ANKERS -->
+            <ul id="ankerLinks">
+                <li><a href="#toDoContainerDiv">Jump to "to do"</a></li>
+                <a href="#toDoContainerDiv">
+                    <img id="toDoSymbol" src="Images/toDoSymbol.png" alt="toDoSymbolAnker">
+                </a>
+                <li><a href="#inProgressContainerDiv">Jump to "in progress"</a></li>
+                <a href="#inProgressContainerDiv">
+                    <img id="inProgressSymbol" src="Images/inProgressSymbol.png" alt="inProgressSymbolAnker">
+                </a>
+                <li><a href="#finishedContainerDiv">Jump to "finished"</a></li>
+                <a href="#finishedContainerDiv">
+                    <img id="finishedSymbol" src="Images/finishedSymbol.png" alt="finishedSymbolAnker">
+                </a>
+            </ul>
+
+            <!-- COLOR SETTINGS -->
+            <ul id="colorSettings">
+                <li id="originalText" onclick="originalMode()">Original Colors 
+                    <div id="originalBtn" class="colorBtn"></div>
+                </li>
+                <li id="darkmodeText" onclick="darkMode()">Darkmode
+                    <div id="darkmodeBtn" class="colorBtn"></div>
+                </li>
+                <li id="colorblindText" onclick="colorblindMode()">Colorblind Mode
+                    <div id="colorblindBtn" class="colorBtn"></div>
+                </li>
+            </ul>
+            <!-- QUESTIONMARK THAT STARTS TUTORIAL -->
+            <img src="Images/questionMarkIcon.png" alt="questionMarkIcon" id="tutorialQuestionmark" onclick="openTutorial()">
+
+        </div>
+
+        <!-- PHASES (TODO, IN PROGRESS, FINISHED) -->
+        <div id="phasesDiv">
+            <div class="phasePadding"></div>
+            <div id="toDoContainerDiv" class="phaseContainerDiv" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <h2>To do</h2>
+                <div class="taskCard" id="taskDiv" draggable="true" ondragstart="drag(event)">
+                    <div id="taskTitle">Title</div>
+                    <div id="taskDescription">Description..</div>
+                </div>
+            </div>
+            <div class="phasePadding"></div>
+            <div id="inProgressContainerDiv" class="phaseContainerDiv" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                <h2>In progress</h2>
+            </div>
+            <div class="phasePadding"></div>
+            <div id="finishedContainerDiv" class="phaseContainerDiv" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                <h2>Finished</h2>
+            </div>
+        </div>
+    </div>
+    <!-- ADD TASK POPUP -->
+    <div class="popUp" id="addTaskPopup">
+        <div id="mainContainerDiv">
+            <span class="close" id="closeAdd">&times;</span>
+            <div id="formDiv">
+                <form onsubmit="submitTask(event)" id="mainForm">
+                    <h2 id="createTaskHeader">Create new task</h2>
+                    <input type="submit" value="Add task" id="addTaskBtn">
+                    <input type="text" placeholder="Enter a title" id="titleText">
+                    <textarea placeholder="Enter a description (objective, due date, tags...)" id="descText" cols=20 rows=10></textarea>
+                    <h2 id="addCheckPointHeader">Add checkpoints</h2>
+                    <input type="button" onclick="addCheckpoint()" value="+" id="checkBtn">
+                    <input type="text" placeholder="Enter a checkpoint" id="checkpointText">
+                    <div id="checkpointsDiv">
+                        Checkpoints
+                        <li id="checkpointsList">Vaske ALLE trappene [x]</li>
+                    </div>
+                    <h2 id="addMemberOrGroupHeader">Add member/group</h2>
+                    <div id="plusDiv">
+                        <select id="memberList">
+                            <option>Person1</option>
+                            <option>Person2</option>
+                            <option>Person3</option>
+                        </select>
+                        <input type="button" id="addMemberOrGroupBtn" onclick="addMemberOrGroup()" value="+">
+                    </div>
+                    <div id="createNewMemberInput">
+                        <input type="text" id="createMemberInput" placeholder="Create new member..">
+                        <input type="button" id="addNewMemberButton" onclick="addNewMemberToTask()" value="+">
+                    </div>
+                    <div id="memberDisplay">
+                        <ul id="memberUl">
+                            <li>Person1</li>
+                            <li>Person2</li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- SHADED BACKGROUND -->
+    <div id="shadedBackground"></div>
+
+    <!-- TUTORIAL POPUP -->
+    <div class="tutorialContainer" id="tutorialContainer">
+        <h2 id="tutorialTitle" class="text">Welcome to orgaNICE</h2>
+
+        <h3 id="infoText" class="text"></h3>
+
+        <div id="continueBtn" class="button" onclick="clickingTutorialBtn()">Continue >></div>
+        <div id="skipTutorialBtn" class="button" onclick="reloadPage()">Skip Tutorial</div>
+
+    </div>
+
+    <!-- CREATE NEW TASK POPUP  -->
+    <div id="newTaskPopup" class="popUp">
+        <div id="viewTaskPopup">
+            <div id="viewTask">
+
+                <div id="viewTaskContainerDiv">
+                    <div id="viewTaskTitleDiv"></div>
+                    <div id="viewTaskDescriptionDiv"></div>
+                    <div id="viewTaskCheckpointsDiv"></div>
+                    <div id="viewTaskMembersDiv"></div>
+                    <div id="viewTaskEditTaskButton" onclick="closeViewTask()">
+                        <span class="close" id="closeView">&times;</span>
+                        <div id="editExistingTaskDiv" onclick="editExistingTask()">
+                            <img src="Images/editSymbol.png" alt="editSymbol">
+                        </div>
+                        <div id="deleteThisTask" onclick="viewTaskdeleteThisTask()">
+                            <img src="Images/trashcan.png" alt="trashCan">
+                        </div>
+                    </div>
+                    <div id="viewTaskPhaseDiv"></div>
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CREATE MEMBERS POPUP -->
+    <div class=popUp id="membersPopup">
+        <div id="formContainerDiv">
+            <span class="close" id="closeMembers">&times;</span>
+            <div id="addMemberContainerDiv" class="addContainerDiv">
+                <form id="memberForm" onsubmit="addMember(event)">
+                    <input type="text" placeholder=" Add a member name" id="memberNameInput">
+                    <textarea placeholder=" Add a description..." id="descriptionTextbox"></textarea>
+                    <input type="submit" value="Add Member" id="addMemberButton">
+                </form>
+                <ul id="memberListUl">Members:
+                    <li>Member1</li>
+                    <li>Member2</li>
+                    <li>Member3</li>
+                </ul>
+            </div>
+            <div id="addGroupContainerDiv" class="addContainerDiv">
+                <form is="groupForm" onsubmit="addGroup(event)">
+                    <input type="text" placeholder=" Add a group name" id="groupNameInput">
+                    <textarea placeholder=" Add a description..." id="groupDescriptionTextbox"></textarea>
+                    <input type="submit" value="Create Group" id="addGroupButton">
+                </form>
+                <ul id="groupListUl">Groups:
+                    <li>GroupName</li>
+                    Member1, Member2, Member3
+                </ul>
+
+                <div id="addMemberToGroupDiv">
+                    <select id="members">
+                        <option>Member1</option>
+                        <option>Member2</option>
+                        <option>Member3</option>
+                    </select>
+                    <select id="groups">
+                        <option>GroupName</option>
+                    </select>
+                    <input type="button" value="Add member to Group" id="createGroupButton" onclick="addMemeberToGroup()">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="JavaScript/members.js"></script>
+    <script src="JavaScript/editTask.js"></script>
+    <script src="JavaScript/projectOverview.js"></script>
+    <script src="JavaScript/tutorial.js"></script>
+    <script src="JavaScript/colorModes.js"></script>
+
+</body>
+</html>

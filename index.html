@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrgaNICE</title>
+
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico"/>
+
+    <!-- CSS FILES -->
+    <link rel="stylesheet" id="theme" type="text/css" href="CSS/indexoriginal.css">
+    <link rel="stylesheet" type="text/css" href="CSS/index.css">
+</head>
+<body id="body">
+    <div class="mainContainer">
+        <!-- SETTINGS -->
+        <div id="settingsDiv">
+            <span class="close" id="closeAdd" onclick="closeSettings()">&times;</span>
+            <p id="originalText" class="settingsText">Original</p>
+            <p id="darkmodeText" class="settingsText">Dark Mode</p>
+            <p id="colorblindText" class="settingsText">Colorblind Mode</p>
+            <div id="originalBtn" class="colorBtn" onclick="originalMode()"></div>
+            <div id="darkmodeBtn" class="colorBtn" onclick="darkMode()"></div>
+            <div id="colorblindBtn" class="colorBtn" onclick="colorblindMode()"></div>
+        </div>
+        <!-- SETTINGS ICON -->
+        <div onclick="openSettings()" class="settings" id="settingsButton">
+            <div id="settingsPart1"></div>
+            <div class="settings" id="settingsPart2"></div>
+            <div class="settings" id="settingsPart3"></div>
+            <div class="settings" id="settingsPart4"></div>
+            <div class="settings" id="settingsPart5"></div>
+            <div class="settings" id="settingsPart6"></div>
+            <div class="settings" id="settingsPart7"></div>
+            <div class="settings" id="settingsPart8"></div>
+            <div class="settings" id="settingsPart9"></div>
+        </div>
+        <!-- LOGO -->
+        <div id="applicationNameDiv">
+            <div id="applicationNameDiv1">orga</div>
+            <div id="applicationNameDiv2">NICE</div>
+        </div>
+        <!-- START BUTTON -->
+        <div id="startButton" href="#">
+            <a href="projectOverview.html"><p id="startText">Get started</p></a>
+        </div>
+    </div>
+    <!-- JAVASCRIPT FILES -->
+    <script src="JavaScript/index.js"></script>
+    <script src="JavaScript/colorModes.js"></script>
+</body>
+</html>

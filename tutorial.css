@@ -1,0 +1,200 @@
+#tutorialQuestionmark {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    left: 165px;
+    bottom: 20px;
+    border-radius: 100%;
+}
+#tutorialQuestionmark:hover {
+    cursor: pointer;
+}
+
+#shadedBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 10%;
+    z-index: 5;
+    display: none;
+}
+#tutorialContainer {
+    display: none ;
+}
+.tutorialContainer {
+    position: absolute;
+    left: 30%;
+    top: 100px;
+    width: 600px;
+    height: 550px;
+    border-radius: 30px;
+    transition: all 2s linear 0s;
+    z-index: 1000;
+}
+.text{
+    position: absolute;
+}
+.button {
+    position: absolute;
+    cursor: pointer;
+}
+
+#tutorialTitle {
+    font-size: 50px;
+    top: 80px;
+    left: 30px;
+}
+#infoText {
+    font-size: 30px;
+    top: 180px;
+    left: 0;
+    margin: 30px;
+}
+
+#continueBtn {
+    position: absolute;
+    bottom: 100px;
+    left: 200px;
+    font-size: 30px;
+}
+
+#skipTutorialBtn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+
+/* Arrow */
+#arrow {
+    position: absolute;
+    left: 300px; 
+    top: 70px;
+    width: 130px;
+    height: 70px;
+    border-radius: 10px;
+    animation: arrowMovement 2s linear 0s infinite;
+    visibility: hidden;
+}
+#arrowHead {
+    position: absolute;
+    width: 0; 
+    height: 0; 
+    top: -28px;
+    left: -60px;
+    border-top: 60px solid transparent;
+    border-bottom: 60px solid transparent; 
+}
+
+/* Square */
+#square {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 90px;
+    left: 150px;
+    border-radius: 10px;
+    visibility: hidden;
+    transition: all 1s linear 0s;
+    z-index: 1000;
+}
+
+/* ---- ANIMATIONS ---- */
+
+@keyframes arrowMovement {
+    0%, 100% { 
+        transform: rotate(20deg) translate(0, 0);
+    }
+    50% { 
+        transform: rotate(20deg) translate(-40px, -5px);
+    }
+}
+
+
+@media only screen and (max-width:500px){
+    #tutorialQuestionmark {
+        width: 30px;
+        height: 30px;
+        left: 160px;
+        bottom: 20px;
+    }
+    .tutorialContainer {
+        left: 0px;
+        top: 100px;
+        width: 300px;
+        height: 200px;
+        border-radius: 30px;
+    }
+    #shadedBackground {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .textContainer {
+        left: 50px;
+        top: 60px;
+        width: 150px;
+        height: 250px;
+        border-radius: 15px;
+    }
+    #tutorialTitle {
+        font-size: 20px;
+        top: 10px;
+        left: 20px;
+    }
+    #infoText {
+        font-size: 30px;
+        top: 120px;
+        left: 0;
+        margin: 25px;
+    }
+    #continueBtn {
+        width: 100px;
+        height: 50px;
+        bottom: 100px;
+        left: 20px;
+    }
+    
+    /* Arrow */
+    /*
+    #arrow {
+        left: -350px; 
+        top: -40px;
+        width: 130px;
+        height: 70px;
+    }
+    #arrowHead {
+        width: 0; 
+        height: 0; 
+        top: -28px;
+        left: -60px;
+        border-right: 70px solid rgb(2, 128, 144);
+        border-top: 60px solid transparent;
+        border-bottom: 60px solid transparent; 
+    }*/
+    
+    /* Square */
+    /*
+    #square {
+        width: 40px;
+        height: 40px;
+        top: -30px;
+        left: -515px;
+    }*/
+}
+
+
+@media only screen and (max-width:768px){
+    .tutorialContainer {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 768px;
+        height: 700px;
+      
+    }
+}

@@ -1,0 +1,962 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Modernist;
+}
+
+@font-face {
+    font-family: Modernist;
+    src: url("Fonts/Modernist-Regular.otf");
+}
+
+
+.mainContainer {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+header {
+    position: absolute;
+    height: 80px;
+    width: 100%;
+    text-align: center; 
+}
+
+
+
+/* Overskrift */ 
+#projectNameDiv {
+    position: relative;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+
+#progressBarDiv {
+    position: relative;
+    height: 20px;
+    width: 50%;
+    top: 22px;
+    left: 0;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+/* Sidebar */ 
+
+#sidebar {
+    position: fixed;
+    top: 0px;
+    width: 200px;
+    height: 100%;
+    left: -150px;
+    border-radius: 5px;
+    transition: all 500ms linear;
+    -webkit-transition: all 500ms linear;
+    z-index: 2;
+}
+
+#sidebar.active {
+    left: 0px;
+}
+
+
+#sidebar ul {
+    position: absolute;
+    margin-top: 180px;
+    list-style: none;
+    padding: 15px 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#sidebar ul li {
+    margin-top: 15px;
+}
+
+#createLinks {
+    position: absolute;
+    top: -120px;
+    list-style: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#createLinks li {
+    padding: 10px 10px;
+}
+
+#ankerLinks {
+    position: absolute;
+    top: 150px;
+    left: 10px;
+    list-style: none;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#colorSettings {
+    position: absolute;
+    top: 400px;
+    left: 10px;
+}
+
+#colorSettings li {
+    padding: 10px 10px;
+}
+
+.colorBtn {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    left: 160px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: red;
+}
+
+#originalBtn{
+    cursor: pointer;
+    top: 45px;
+}
+
+#darkmodeBtn{
+    cursor: pointer;
+    top: 98px;
+}
+
+#colorblindBtn{
+    cursor: pointer;
+    top: 153px;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.2s ease-out;
+    -webkit-transition: all 0.2s ease-out;
+}
+
+
+#trashTaskText {
+    cursor: auto;
+    transition: all 0.2s ease-out;
+    -webkit-transition: all 0.2s ease-out;
+}
+
+
+#sidebar .toggleBtn {
+    position: absolute;
+    left: 158px;
+    top: 20px;
+    cursor: pointer;
+}
+
+#sidebar .toggleBtn span {
+    display: block;
+    width: 30px;
+    height: 5px;
+    margin: 5px 0px;
+}
+
+#createNewTaskButton {
+    position: relative;
+    top: 99px;
+    left: 162px;
+    width: 25px;
+    z-index: 1;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: transform 200ms ease-in;
+    -webkit-transition: -webkit-transform 200ms ease-in;
+}
+
+#createNewTaskButton:hover {
+    transform: rotate(360deg);
+}
+
+#createNewMemberButton {
+    position: relative;
+    top: 152px;
+    left: 133px;
+    width: 25px;
+    z-index: 1;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: transform 200ms ease-in;
+    -webkit-transition: -webkit-transform 200ms ease-in;
+}
+
+#createNewMemberButton:hover {
+transform: scale(1.1);
+}
+
+
+#trashContainerDiv {
+    position: relative;
+    top: 168px;
+    width: 35px;
+    left: 157px;
+    z-index: 1;
+}
+
+#trashContainerDiv img {
+    position: relative;
+    width: 33px;
+    height: 33px;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: transform 300ms ease-in;
+    -webkit-transition: -webkit-transform 300ms ease-in;
+}
+
+#trashContainerDiv img:hover{
+    transform: rotate(-10deg);
+}
+
+
+#toDoSymbol {
+    position: relative;
+    display: block;
+    top: -20px;
+    left: 146px;
+    width: 20px;
+    height: 20px;
+}
+
+#inProgressSymbol {
+    position: relative;
+    display: block;
+    top: -20px;
+    left: 146px;
+    width: 20px;
+    height: 20px;
+}
+
+#finishedSymbol {
+    position: relative;
+    display: block;
+    top: -20px;
+    left: 150px;
+    width: 20px;
+    height: 20px;
+}
+
+
+
+
+/* Board with tasks */ 
+
+h2 {
+    position: relative;
+    font-size: 20px;
+    margin-bottom: 15px;  
+}
+#phasesDiv {
+    position: relative;
+    top: 100px;
+    display: grid; 
+    grid-template-columns: 80px auto;
+}
+.phaseContainerDiv {
+    position: relative;
+    min-height: 200px;
+}
+.phasePadding {
+    position: relative;
+    width: 205px;
+    height: 200px;
+}
+.taskCard {
+    position: relative;
+    padding: 5px;
+    height: 100px;
+    width: 200px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    float: left;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    transition: transform 200ms ease-in;
+    -webkit-transition: -webkit-transform 200ms ease-in;
+    overflow: hidden;
+}
+#taskTitle {
+    font-size: 20px;
+}
+.taskCard:hover{
+    transform: rotate(-0.5deg);
+    cursor: pointer;
+}
+#taskCardClickTarget {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    width: 200px;
+    height: 100px;
+}
+
+
+
+/* popups close */
+
+::placeholder {
+    font-size: 10px;
+    font-family: Modernist;
+}
+
+.close {
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Add task popup*/
+
+.popUp {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+ #closeAdd {
+     position: absolute;
+     right: 5px;
+     top: -10px;
+     align-self: start;
+ }
+#mainContainerDiv {
+    position: relative;
+    padding: 20px;
+    top: 15%;
+    left: 205px;
+    width: 60%;
+    max-width: 600px;
+    border-radius: 5px;
+}
+#formDiv {
+    position: relative;
+    height: 350px;
+    width: 100%;
+    overflow: hidden;
+}
+#mainForm {
+    position: relative;
+    top:0;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 33% 33% auto;
+    grid-template-rows: 30px 30px 30px auto;
+}
+#createTaskHeader {
+    grid-row: 1;
+    grid-column: 1;
+    font-size: 15px;
+    font-family: Modernist;
+ }
+ #addMemberOrGroupHeader {
+    grid-row: 1;
+    grid-column: 2;
+    font-size: 15px;
+    font-family: Modernist;
+ }
+.removeEditCheckPoints{
+    position: absolute;
+    cursor: pointer;
+    right: 0;
+}
+
+ #addMemberOrGroupBtn:hover {
+    cursor: pointer;
+ }
+
+ #addNedMemberButton:hover {
+    cursor: pointer;
+ }
+
+#titleText {
+    grid-row: 2;
+    grid-column: 1;
+    height: 20px;
+    width: 85%;
+    border-radius: 3px;
+    font-family: Modernist;
+}
+
+#descText {
+    grid-row-start: row2-start;
+    grid-row-end: 3;
+    grid-column: 1;
+    width: 85%;
+    height: 90%;
+    resize: none;
+    border-radius: 3px;
+    font-family: Modernist;
+}
+
+#memberList {
+    grid-row: 2;
+    grid-column: 2;
+    border-radius: 2px;
+    font-size: 12px;
+    width: 70%;
+    height: 20px;
+    justify-self: start;
+}
+
+#addMemberOrGroupBtn {
+    grid-row: 2;
+    grid-column: 2;
+    justify-self: end; 
+    width: 22px;
+    height: 24px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#plusDiv {
+    grid-row: 2;
+    grid-column: 2;
+    width: 100%;
+}
+
+#memberDisplay {
+    grid-row-start: row3-start;
+    grid-row-end: 4;
+    grid-column: 2;
+    border-radius: 3px;
+    height: 90%;
+    width: 85%;
+    overflow: hidden;
+    font-family: Modernist;
+}
+
+#memberUl {
+    position: relative;
+    left: 2px;
+    list-style: none;
+    font-size: 12px;
+    font-family: Modernist;
+}
+
+#createNewMemberInput {
+    grid-row: 3;
+    grid-column: 2;
+}
+#createMemberInput {
+    grid-row: 2;
+    grid-column: 2;
+    border-radius: 2px;
+    font-size: 12px;
+    width: 70%;
+    height: 20px;
+}
+
+#addNewMemberButton {
+    grid-row: 3;
+    grid-column: 2;
+    justify-self: end;
+    width: 22px;
+    height: 24px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#addCheckPointHeader {
+    grid-row: 1;
+    grid-column: 3;
+    white-space: nowrap;
+    font-size: 15px;
+    font-family: Modernist;
+}
+
+#checkpointText {
+    grid-row: 2;
+    grid-column: 3;
+    width: 80%;
+    height: 20px;
+    border-radius: 3px;
+    font-family: Modernist;
+}
+
+#checkBtn {
+    grid-row: 2;
+    grid-column: 3;
+    justify-self: end;
+    width: 22px;
+    height: 24px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#checkpointsDiv {
+    grid-row: 3;
+    grid-column: 3;
+    width: 90%;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: underline;
+    list-style: circle;
+}
+#addTaskBtn {
+    position: absolute;
+    bottom: 10px;
+    right: 5px;
+    width: 120px;
+    height: 30px;
+    border-radius: 2px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
+
+/* View Task popup */
+#newTaskPopup {
+    position: fixed;
+}
+#viewTaskPopup {
+    position: relative;
+    top: 15%;
+    left: 205px;
+    width: 50%;
+    min-width: 400px;
+    min-height: 200px;
+    max-width: 500px;
+    border-radius: 5px;
+    padding: 10px;
+    padding-bottom: 50px;
+
+}
+ #viewTask {
+    position: absolute;
+    width: 100%;
+    min-width: 400px;
+    min-height: 200px;
+    border-radius: 5px;
+ }
+
+ #viewTaskContainerDiv {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     display: grid;
+     grid-template-columns: 50% 50%;
+     grid-template-rows: auto auto auto auto;
+ }
+
+#viewTaskTitleDiv {
+    font-size: 20px;
+    width: 100%;
+    grid-row: 1;
+    grid-column: 1;
+}
+
+#viewTaskTitleDiv:hover {
+    cursor: pointer;
+}
+
+.changePhaseButton {
+    width: 80px;
+    height: 20px;
+    cursor: pointer;
+}
+
+
+#editTitle:hover {
+    cursor: pointer;
+}
+
+#okButton:hover {
+    cursor: pointer;
+}
+
+
+#viewTaskDescriptionDiv {
+    font-size: 15px;   
+    overflow-y: scroll;
+    grid-row: 2;
+    grid-row-end: span 2;
+}
+
+#viewTaskPhaseDiv {
+    align-self: end;
+    justify-self: end;
+    padding-right: 50px;
+    grid-column: 2;
+    grid-row: 4;
+}
+
+#viewTaskMembersDiv {
+    grid-column: 1;
+    grid-row: 4;
+    align-self: end;
+}
+
+#viewTaskCheckpointsDiv {
+    font-size: 15px;
+    grid-column-start: 2;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.viewTaskCheckpoints {
+    position: absolute;
+    right: 50px;
+    margin-top:5px;
+}
+#viewTaskEditTaskButton {
+    grid-column: 2;
+    grid-row: 1;
+}
+#closeView {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    display: inline;
+    cursor: pointer;
+}
+
+
+#editExistingTaskDiv {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    display: block;
+    cursor: pointer;
+    border-radius: 20px;
+    text-align: center;
+    bottom: -50px;
+    right: 20px;
+}
+
+#editExistingTaskDiv img {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 6px;
+    left: 7px;
+}
+#deleteThisTask {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    display: block;
+    cursor: pointer;
+    border-radius: 20px;
+    text-align: center;
+    bottom: -50px;
+    left: 0px;
+}
+#deleteThisTask img {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 6px;
+    left: 7px;
+}
+
+#CP-0:hover {
+    cursor: pointer;
+}
+
+
+
+/* members popup */
+
+::placeholder{
+    font-size: 12px;
+    font-family: Modernist;
+    opacity: 70%;
+}
+
+#membersPopup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+#formContainerDiv {
+    position: absolute;
+    margin: 0 auto;
+    width: 50%;
+    max-width: 500px;
+    display: flex;
+    padding-bottom: 60px;
+    border-radius: 10px;
+    top: 15%;
+    left: 205px;
+    padding: 10px;
+}
+
+.addContainerDiv {
+    position: relative;
+    margin-top: 30px;
+    padding: 10px;
+    height: 500px;
+    width: auto;
+    border-radius: 5px;
+}
+.membersListTitle {
+    font-size: 20px;
+    font-family: Modernist;
+}
+
+#membersPopup ul {
+    list-style-position: inside;
+    font-size: 12px;
+}
+#membersPopup li {
+    list-style-position: inside;
+    font-size: 15px;
+}
+
+#memberNameInput {
+    margin-bottom: 10px;
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+}
+
+#descriptionTextbox {
+    margin-bottom: 10px;
+    padding-top: 5px;
+    width: 100%;
+    height: 60px;
+    resize: none;
+    border-radius: 5px;
+}
+
+#groupNameInput {
+    margin-bottom: 10px;
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+}
+
+#groupDescriptionTextbox {
+    margin-bottom: 10px;
+    padding-top: 5px;
+    resize: none;
+    width: 100%;
+    height: 60px;
+    border-radius: 5px;
+}
+
+
+#members {
+    width: 100px;
+    margin-bottom: 30px;
+}
+
+#groups {
+    width: 100px;
+    margin-bottom: 30px;
+}
+
+
+#memberListUl{
+    margin-top: 15px;
+    font-family: Modernist;
+}
+
+
+#groupListUl{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: Modernist;
+}
+
+.membersGroupSpan {
+    position: absolute;
+    right: 20px;
+}
+
+
+#addMemberButton {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#addGroupButton {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#createGroupButton{
+    margin-top: 10px;
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.delete{
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+}
+.deleteGroupSpan {
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+}
+
+#membersPopup li {
+    width: 90%;
+    position: relative;
+}
+.delete:hover{
+    cursor: pointer;
+}
+.deleteGroupSpan:hover{
+    cursor: pointer;
+}
+#closeMembers {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    font-size: 30px;
+    font-weight: bold;
+    
+}
+
+/* Styling for different screen sizes*/
+
+@media only screen and (max-width:500px){
+    #progressBarDiv {
+        left: 50px;
+    }
+
+    /* Add/edit task on mobile*/
+    #mainContainerDiv {
+        position: relative;
+        top: 20px;
+        padding:20px;
+        width: 80%;
+        left: 20px;
+        height: 90%;
+    }
+    #formDiv {
+        height: 100%;
+    }
+
+    #mainForm {
+        position: relative;
+        top:0;
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 30px 30px 30px auto 30px 30px 30px auto;
+    }
+    #descText {
+        grid-row: 3;
+        grid-row-end: span 2;
+        grid-column: 1;
+    }
+
+    #memberDisplay {
+        grid-row: 4;
+        grid-row-end: span 2;
+        grid-column: 2;
+        height: 80%;
+    }
+
+    #checkpointsDiv {
+        font-size: 15px;
+        grid-column-start: 1;
+        grid-row-start: 7;
+        grid-row-end: 7;
+    }
+
+    #addCheckPointHeader {
+        grid-row: 5;
+        grid-column: 1;
+    }
+    
+    #checkpointText {
+        grid-row: 6;
+        grid-column: 1;
+    }
+    
+    #checkBtn {
+        grid-row: 6;
+        grid-column: 1;
+    }
+    
+}
+
+@media only screen and (max-width:800px){
+    #mainContainerDiv {
+        top: 20px;
+        padding:20px;
+        width: 80%;
+        left: 20px;
+    }
+    
+    #viewTaskPopup {
+        position: relative;
+        top: 15%;
+        left: 20px;
+        width: 80%;
+        min-width: 200px;
+        min-height: 200px;
+        max-width: 500px;
+        border-radius: 5px;
+        padding: 10px;
+        padding-bottom: 50px;
+    
+    }
+     #viewTask {
+        position: absolute;
+        width: 100%;
+        min-width: 200px;
+        min-height: 200px;
+        border-radius: 5px;
+     }
+
+     /* Add members*/
+     #formContainerDiv {
+        position: absolute;
+        width: 90%;
+        left: 20px;
+    }
+    
+    .addContainerDiv {
+        padding: 5px;
+    }
+}
+

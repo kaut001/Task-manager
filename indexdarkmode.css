@@ -1,0 +1,84 @@
+
+body{
+    background-color: rgb(34,31,31);
+}
+
+/* Settingshjulet */
+.settings{
+    background-color: rgb(195,218,195);
+}
+#settingsButton:hover{
+    background-color: rgb(255,153,51);
+}
+#settingsButton:hover .settings{
+    background-color: rgb(255,153,51);
+}
+#settingsPart1{
+    background-color: rgb(64,64,64);
+}
+
+/* Settings vinduet */
+#settingsDiv{
+    background-color: rgb(34,31,31);
+    border-color: rgb(255,153,51);
+}
+#closeSettingsButtonPart1{
+    background-color: rgb(255,153,51);
+}
+#closeSettingsButtonPart2{
+    background-color: rgb(255,153,51);
+}
+#originalText{
+    color: rgb(255,153,51);
+}
+#darkmodeText{
+    color: rgb(255,153,51);
+}
+#colorblindText{
+    color: rgb(255,153,51);
+}
+#originalBtn{
+    background-color: rgb(195,218,195);
+}
+#darkmodeBtn{
+    background-color: rgb(255,153,51);
+}
+#colorblindBtn{
+    background-color: rgb(195,218,195);
+}
+#originalBtn:hover{
+    background-color: rgb(255,153,51);
+}
+#colorblindBtn:hover{
+    background-color: rgb(255,153,51);
+}
+
+
+/* Navnet på nettsiden */
+#applicationNameDiv1{
+    color: rgb(195,218,195);
+}
+
+#applicationNameDiv2{
+    color: rgb(255,153,51);
+}
+
+/* Prosjektknappen */
+#startButton{
+    background-color: rgb(255,153,51);
+    box-shadow: 0.5px 0.5px 30px 1px rgb(50,50,50);
+}
+#startButton:hover{
+    background-color: rgb(34,31,31);
+    box-shadow: 0.5px 0.5px 30px -5px rgb(50,50,50);
+}
+#startButton:hover #startText {
+    color: rgb(255,153,51)
+}
+#startText{
+    color: rgb(34,31,31);
+}
+
+
+
+
